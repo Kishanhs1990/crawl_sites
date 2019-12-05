@@ -48,6 +48,9 @@ HIT sitemap URLS obtained to get actual article data -> cat /tmp/filename | whil
 
 7. Use PARSEHUB to get data based on selection to crawl sites. / xmllint --xpath [another approch to get data]
 Use awk/sed to add ", or any missing comma at the end to get a proper JSON format.
+
+https://help.parsehub.com/hc/en-us/articles/218187697-Enter-a-list-of-URLs-to-crawl
+
 {
  "urls": [
  "https://www.walmart.ca/en/ip/hp-stream-14-cb110ca-14-inch-laptop-white-intel-celeron-n4000-intel-uhd-600-4gb-ram-64gb-emmc-windows-10-s-4jc81uaabl/6000198793458",
