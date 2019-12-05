@@ -58,3 +58,34 @@ https://help.parsehub.com/hc/en-us/articles/218187697-Enter-a-list-of-URLs-to-cr
  "https://www.walmart.ca/en/ip/acer-aspire-3-156-laptop-amd-e2-9000-amd-radeon-r2-graphics-8-gb-ddr4-1-tb-hard-drive-windows-10-home-nxgnvaa019/6000197843008"
  ]
 }
+
+
+8. Also another alternative approch to crawl sites would be using webhose.io
+create an account and use their API to get data from the webhose
+
+import webhoseio
+import json
+
+webhoseio.config(token="e47b3bb1-c3d5-446c-8f10-3531655f54fe")
+// This part will be replaced from webhose API
+query_params = {
+	"q": "site:<add ur site name here>.com",
+	"ts": "1558897602554",
+	"sort": "crawled"
+    }
+
+output = webhoseio.query("filterWebContent", query_params)
+
+list_artilce_dict = []
+count = 0
+MerchantId = 0
+for i in range(0, output['totalResults']):
+    if count > 99:
+        output = webhoseio.get_next()
+        count = 0
+    MerchantId = 130920
+    list_artilce_dict.append([output['posts'][count]['title'], output['posts'][count]['text'] , MerchantId ,output['posts'][count]['thread']['site_categories'] , output['posts'][count]['published'] ,output['posts'][count]['author'],output['posts'][count]['url'], output['posts'][count]['thread']['main_image'], output['posts'][count]['thread']['uuid']])
+    count = count + 1
+
+with open('filename.json', 'w') as file:
+    json.dump(list_artilce_dict, file)
